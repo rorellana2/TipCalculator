@@ -7,10 +7,100 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.orangecoastcollege.cs273.rorellana2.tipcalculator.MainActivity">
+    tools:context="edu.orangecoastcollege.cs273.rorellana2.tipcalculator.MainActivity"
+    android:columnCount="2"
+    android:id="@+id/tipCalculatorGridLayout"
+    android:useDefaultMargins="true"
+    android:touchscreenBlocksFocus="false">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/amountEditText"
+        android:layout_columnSpan="2"
+        android:layout_column="0"
+        android:layout_row="0" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/amountTextView"
+        android:layout_column="0"
+        android:layout_row="0"
+        android:layout_columnSpan="2"
+        android:hint="@string/enter_amount"
+        android:background="#bbdefb"
+        android:padding="12dp"
+        android:elevation="4dp"
+        android:layout_gravity="fill_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="15%"
+        android:id="@+id/percentTextView"
+        android:layout_column="0"
+        android:layout_row="1"
+        android:layout_columnSpan="1"
+        android:padding="12dp" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/percentSeekBar"
+        android:layout_column="1"
+        android:layout_columnSpan="1"
+        android:layout_row="1"
+        android:padding="2dp"
+        android:layout_gravity="fill_horizontal|center"
+        android:elevation="4dp"
+        android:clickable="false"
+        android:max="50"
+        android:progress="20"
+        android:indeterminate="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Tip"
+        android:id="@+id/textView2"
+        android:padding="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/tipTextView"
+        android:background="#f5cc8f"
+        android:layout_gravity="fill_horizontal"
+        android:padding="12dp"
+        android:elevation="4dp"
+        android:text="$0.00" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Total"
+        android:id="@+id/textView1"
+        android:layout_column="0"
+        android:layout_row="3"
+        android:layout_columnSpan="1"
+        android:padding="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="$0.00"
+        android:id="@+id/totalTextView"
+        android:background="#f5cc8f"
+        android:padding="12dp"
+        android:layout_gravity="fill_horizontal"
+        android:elevation="4dp" />
 </GridLayout>
