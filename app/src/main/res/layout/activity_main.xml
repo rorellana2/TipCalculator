@@ -59,7 +59,7 @@
         android:layout_gravity="fill_horizontal|center"
         android:elevation="4dp"
         android:clickable="false"
-        android:max="50"
+        android:max="100"
         android:progress="20"
         android:indeterminate="false" />
 
