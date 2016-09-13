@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Connect the controller with the widgets in our app
+        //  Connect the controller with the widgets in our app
         amountEditText = (EditText) findViewById(R.id.amountEditText);
         amountTextView = (TextView) findViewById(R.id.amountTextView);
         percentTextView = (TextView) findViewById(R.id.percentTextView);
