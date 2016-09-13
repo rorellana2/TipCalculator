@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     // Associate the controller with the needed views
@@ -17,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView totalTextView;
     private TextView tipTextView;
     private SeekBar percentSeekBar;
+
+    private static NumberFormat currency = NumberFormat.getCurrencyInstance();
+    private static NumberFormat percent = NumberFormat.getPercentInstance();
 
     // Associate the controller with the needed model
     RestaurantBill currentBill = new RestaurantBill();
@@ -37,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         // Define a listener for the amountEditText (onTextChange)
         amountEditText.addTextChangedListener(amountTextChangedListener);
 
+        // Define a listener for the percentSeekBar (onProgressChanged)
+        percentSeekBar.setOnSeekBarChangeListener(percentChangedListener);
     }
 
     private TextWatcher amountTextChangedListener = new TextWatcher() {
@@ -57,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
                 amountEditText.setText("");
             }
 
+            // No exception, input is valid:
+            // 1) Set the bill amount (amountTextView)
+            amountTextView.setText(currency.format(currentBill.getAmount()));
+            updateViews();
         }
 
         @Override
@@ -64,4 +75,36 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+    private SeekBar.OnSeekBarChangeListener percentChangedListener = new SeekBar.OnSeekBarChangeListener() {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+            // Update the model with the new tip amount
+            currentBill.setTipPercent(i / 100.0);
+
+            // Update the percentTextView
+            percentTextView.setText(percent.format(currentBill.getTipPercent()));
+
+            // Update the views
+            updateViews();
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+
+        }
+    };
+
+    private void updateViews()
+    {
+        // 2) Set the tip amount (tipTextView)
+        tipTextView.setText(currency.format(currentBill.getTipAmount()));
+        // 3) Set the total amount (totalAmountTextView)
+        totalTextView.setText(currency.format(currentBill.getTotalAmount()));
+    }
 }
